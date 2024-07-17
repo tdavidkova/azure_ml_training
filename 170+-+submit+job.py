@@ -1,9 +1,13 @@
 from azureml.core import Experiment, ScriptRunConfig, Environment, Workspace
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.compute import ComputeTarget
+# from azureml.core.compute import LocalCompute
 
 # Access the workspace using config.json
 ws = Workspace.from_config(".")
+
+# Define a local compute target
+# local_compute = LocalCompute(ws, name="local-compute")
 
 # 1. Create or Get an Environment
 sklearn_env = Environment("sklearn-env1")
@@ -27,7 +31,8 @@ script_config = ScriptRunConfig(
     source_directory='.',  # Directory containing the script
     script='180+-+Script+To+Run.py',  # Script to run
     environment=sklearn_env,  # Environment for the run
-    compute_target=compute_target  # Compute target for running the script
+    # compute_target=compute_target  # Compute target for running the script
+    compute_target="local"  # Compute target on local machine
 )
 
 # 4. Submit and Run the Experiment

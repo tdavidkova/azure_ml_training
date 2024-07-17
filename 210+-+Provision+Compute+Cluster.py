@@ -7,7 +7,7 @@ from azureml.core import Workspace
 
 
 # Access the workspace from the config.json 
-ws = Workspace.from_config(path="./config")
+ws = Workspace.from_config(path=".")
 
 
 # Specify the cluster name
