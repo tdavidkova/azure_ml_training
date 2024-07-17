@@ -1,3 +1,4 @@
+# working script with azure compute instance, !!! add all venvs to .almignore
 from azureml.core import Experiment, ScriptRunConfig, Environment, Workspace
 from azureml.core.conda_dependencies import CondaDependencies
 from azureml.core.compute import ComputeTarget
@@ -31,8 +32,8 @@ script_config = ScriptRunConfig(
     source_directory='.',  # Directory containing the script
     script='180+-+Script+To+Run.py',  # Script to run
     environment=sklearn_env,  # Environment for the run
-    # compute_target=compute_target  # Compute target for running the script
-    compute_target="local"  # Compute target on local machine
+    compute_target=compute_target  # Compute target for running the script
+    # compute_target="local"  # Compute target on local machine
 )
 
 # 4. Submit and Run the Experiment
