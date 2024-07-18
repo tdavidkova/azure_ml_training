@@ -1,5 +1,7 @@
 /.venv311
 /myenv
 /nthenv
-/venv38
+/venv308
 /.venv
+/*venv*
+/.conda

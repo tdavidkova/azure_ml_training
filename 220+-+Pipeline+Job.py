@@ -20,7 +20,7 @@ from azureml.core.environment import CondaDependencies
 myenv = Environment(name="MyEnvironment")
 
 # Create the dependencies object
-myenv_dep = CondaDependencies.create(conda_packages=['scikit-learn'])
+myenv_dep = CondaDependencies.create(conda_packages=['scikit-learn','pandas'])
 
 myenv.python.conda_dependencies = myenv_dep
 
