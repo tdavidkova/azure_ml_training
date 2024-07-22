@@ -20,7 +20,7 @@ from azureml.core.environment import CondaDependencies
 myenv = Environment(name="MyEnvironment")
 
 # Create the dependencies object
-myenv_dep = CondaDependencies.create(conda_packages=['scikit-learn','pandas'])
+myenv_dep = CondaDependencies.create(conda_packages=['scikit-learn', 'pandas'])
 
 myenv.python.conda_dependencies = myenv_dep
 
@@ -61,6 +61,7 @@ run_config.environment = myenv
 # Define Pipeline steps
 from azureml.pipeline.steps import PythonScriptStep
 from azureml.pipeline.core  import PipelineData
+
 
 
 input_ds = ws.datasets.get('Defaults')

@@ -7,4 +7,5 @@ config*
 /nthenv
 /.venv38
 /.venv
+/conda*
 

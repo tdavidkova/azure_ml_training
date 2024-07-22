@@ -40,13 +40,15 @@ dataPrep[cols] = dataPrep[cols].fillna(mode)
 
 
 # Replace numerical columns with mean
-mean = dataPrep.mean()
-dataPrep = dataPrep.fillna(mean)
+cols = dataPrep.select_dtypes(include='float').columns
+print(cols)
+mean = dataPrep[cols].mean() # original code - error, tries to take mean of string
+dataPrep[cols] = dataPrep[cols].fillna(mean)
 
-
+print("Create dummies...")
 # Create Dummy variables - Not required in designer/Classic Studio
 dataPrep = pd.get_dummies(dataPrep, drop_first=True)
-
+print("Done creating dummies...")
 
 # Normalise the data
 from sklearn.preprocessing import MinMaxScaler
