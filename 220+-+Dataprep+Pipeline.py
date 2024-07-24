@@ -46,7 +46,7 @@ mean = dataPrep[cols].mean() # original code - error, tries to take mean of stri
 dataPrep[cols] = dataPrep[cols].fillna(mean)
 
 print("Create dummies...")
-# Create Dummy variables - Not required in designer/Classic Studio
+# Create Dummy variables - Not required in designer/Classic Studio - check if label not imported as boolean already
 dataPrep = pd.get_dummies(dataPrep, drop_first=True)
 print("Done creating dummies...")
 

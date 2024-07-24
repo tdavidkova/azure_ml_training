@@ -79,7 +79,7 @@ LoanPrep = LoanPrep.dropna()
 print(len(LoanPrep))
 
 
-# Create Dummy variables - Not required in designer
+# Create Dummy variables - Not required in designer - check if Loan status not imported as boolean already
 LoanPrep = pd.get_dummies(LoanPrep, drop_first=True)
 print(LoanPrep.columns)
 print(LoanPrep['Loan_Status_Y'].value_counts())
