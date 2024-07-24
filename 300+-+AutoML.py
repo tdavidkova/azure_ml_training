@@ -16,13 +16,23 @@
 # Import the Workspace class
 from azureml.core import Workspace
 
+import json
+with open ("./config.json") as file:
+    data = json.load(file)
+
 # Access the workspace from the config.json 
 print("Accessing the workspace...")
-ws = Workspace.from_config(path="./config")
+# ws = Workspace.from_config(path="./config")
+# AVOID CONFUSION WITH OTHER CONFIG FILES THAT MIGHT BE SAVED SOMEWHERE IN PARENT/CHILD DIRECTORIES
+ws = Workspace(subscription_id=data['subscription_id'],
+               workspace_name=data['workspace_name'],
+               resource_group=data['resource_group'])
+print(ws.name)
 
 # Get the input data from the workspace
 print("Accessing the dataset...")
 input_ds = ws.datasets.get('Defaults')
+
 
 
 # --------------------------------------------------------------------
