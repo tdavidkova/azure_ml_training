@@ -5,9 +5,18 @@
 # Import the Azure ML classes
 from azureml.core import Workspace, Experiment
 
-# Access the workspace using config.json
-print("Accessing the workspace from job....")
-ws = Workspace.from_config("./config")
+import json
+with open ("./config.json") as file:
+    data = json.load(file)
+
+# Access the workspace from the config.json 
+print("Accessing the workspace...")
+# ws = Workspace.from_config(path="./config")
+# AVOID CONFUSION WITH OTHER CONFIG FILES THAT MIGHT BE SAVED SOMEWHERE IN PARENT/CHILD DIRECTORIES
+ws = Workspace(subscription_id=data['subscription_id'],
+               workspace_name=data['workspace_name'],
+               resource_group=data['resource_group'])
+print(ws.name)
 
 
 # Get the input dataset
@@ -25,7 +34,7 @@ from azureml.core.environment import CondaDependencies
 myenv = Environment(name="MyEnvironment")
 
 # Create the dependencies object
-myenv_dep = CondaDependencies.create(conda_packages=['scikit-learn', 'pip'],
+myenv_dep = CondaDependencies.create(conda_packages=['scikit-learn', 'pip','pandas'],
                                      pip_packages=['azureml-defaults'])
 
 myenv.python.conda_dependencies = myenv_dep

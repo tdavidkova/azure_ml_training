@@ -49,7 +49,7 @@ import pandas as pd
 # Access the Workspace, Datastore and Datasets
 # -----------------------------------------------------
 # ws                = Workspace.from_config(".")
-az_store          = Datastore.get(ws, 'cont01')
+az_store          = Datastore.get(ws, 'experiment_data')
 az_dataset        = Dataset.get_by_name(ws, 'Loan Applications Using SDK')
 az_default_store  = ws.get_default_datastore()
 
