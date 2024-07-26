@@ -1,15 +1,28 @@
 # -----------------------------------------------------------------
 # Register the model from workspace using run_id and local pkl file
 # -----------------------------------------------------------------
-from azureml.core import Workspace, Model
+from azureml.core import Workspace, Model, Experiment
 
 
 # Access the workspace using config.json
-ws = Workspace.from_config("./config")
+import json
+# Load the configuration file
+with open('./config.json', 'r') as config_file:
+    config = json.load(config_file)
 
+print(config)
+# Extract the account key from the configuration
+storage_account_key = config.get('storage_account_key')
+ws = Workspace(subscription_id=config.get('subscription_id'),
+               workspace_name=config.get('workspace_name'),
+               resource_group=config.get('resource_group'))
+print(ws.name)
+
+experiment = Experiment(workspace=ws, name='Webservice-exp001')
+print(list(experiment.get_runs()))
 
 # Access the run using run_id
-new_run = ws.get_run('<Your Run ID>')
+new_run = ws.get_run('e818887f-47de-4b29-ae0a-054b43221bf6')
 
 
 
