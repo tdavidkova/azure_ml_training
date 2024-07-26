@@ -8,4 +8,5 @@ config*
 /.venv38
 /.venv
 /conda*
+*.pkl
 
