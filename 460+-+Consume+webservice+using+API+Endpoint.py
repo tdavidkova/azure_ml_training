@@ -22,8 +22,8 @@ scoring_uri = 'http://51.8.76.191:80/api/v1/service/adultincome-service/score'
 # Prepare the input data and create the serialized JSON
 # ------------------------------------------------------
 x_new = {'age':[46],
-         'workclass':['Private'],
-         'education':['Masters'],
+         'workclass':['State-gov'],
+         'education':['9th'],
          'marital_status':['Married-civ-spouse'],
          'hours per week':[60]}
 
