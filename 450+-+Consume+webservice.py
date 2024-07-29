@@ -7,7 +7,19 @@ from azureml.core import Workspace
 
 # Access the workspace using config file
 print("Accessing the workspace....")
-ws = Workspace.from_config("./config")
+import json
+# Load the configuration file
+print("Accessing the workspace from job....")
+with open('./config.json', 'r') as config_file:
+    config = json.load(config_file)
+
+print(config)
+# Extract the account key from the configuration
+storage_account_key = config.get('storage_account_key')
+ws = Workspace(subscription_id=config.get('subscription_id'),
+               workspace_name=config.get('workspace_name'),
+               resource_group=config.get('resource_group'))
+print(ws.name)
 
 
 # Access the service end points
@@ -19,11 +31,9 @@ service = ws.webservices['adultincome-service']
 import json
 
 x_new = {'age':[46],
-         'wc':['Private'],
+         'workclass':['Private'],
          'education':['Masters'],
-         'marital status':['Married'],
-         'race':['White'],
-         'gender':['Male'],
+         'marital_status':['Married-civ-spouse'],
          'hours per week':[60]}
 
 # Convert the dictionary to a serializable list in json

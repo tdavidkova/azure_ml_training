@@ -3,8 +3,19 @@
 from azureml.core import Workspace
 
 # Access the workspace using config.json
+import json
+# Load the configuration file
 print("Accessing the workspace from job....")
-ws = Workspace.from_config("./config")
+with open('./config.json', 'r') as config_file:
+    config = json.load(config_file)
+
+print(config)
+# Extract the account key from the configuration
+storage_account_key = config.get('storage_account_key')
+ws = Workspace(subscription_id=config.get('subscription_id'),
+               workspace_name=config.get('workspace_name'),
+               resource_group=config.get('resource_group'))
+print(ws.name)
 
 
 # -------------------------------------------------
@@ -71,7 +82,7 @@ inference_config = InferenceConfig(source_directory = './service_files',
 from azureml.core.webservice import AksWebservice
 
 print('Creating the Deployment configuration for webservice...')
-deploy_config = AksWebservice.deploy_configuration(cpu_cores = 1,
+deploy_config = AksWebservice.deploy_configuration(cpu_cores = 0.5,
                                                    memory_gb = 1)
 
 

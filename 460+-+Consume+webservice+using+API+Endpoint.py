@@ -15,19 +15,17 @@ import json
 # ------------------------------------------------------
 # Set the URI for the web service
 # ------------------------------------------------------
-scoring_uri = 'http://52.150.36.193:80/api/v1/service/adultincome-service/score'
+scoring_uri = 'http://51.8.76.191:80/api/v1/service/adultincome-service/score'
 
 
 # ------------------------------------------------------
 # Prepare the input data and create the serialized JSON
 # ------------------------------------------------------
-x_new = {'age':[21],
-         'wc':['Private'],
-         'education':['HS-grad'],
-         'marital status':['Never-married'],
-         'race':['White'],
-         'gender':['Male'],
-         'hours per week':[30]}
+x_new = {'age':[46],
+         'workclass':['Private'],
+         'education':['Masters'],
+         'marital_status':['Married-civ-spouse'],
+         'hours per week':[60]}
 
 # Convert the input data to a serialized JSON
 json_data = json.dumps({"data": x_new})
