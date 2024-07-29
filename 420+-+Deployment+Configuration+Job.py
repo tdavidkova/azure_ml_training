@@ -18,7 +18,7 @@ myenv = Environment(name="MyEnvironment")
 
 # Create the dependencies object
 print("Creating dependencies....")
-myenv_dep = CondaDependencies.create(conda_packages=['scikit-learn', 'pip'],
+myenv_dep = CondaDependencies.create(conda_packages=['scikit-learn', 'pip', 'pandas'],
                                      pip_packages=['azureml-defaults'])
 
 myenv.python.conda_dependencies = myenv_dep
