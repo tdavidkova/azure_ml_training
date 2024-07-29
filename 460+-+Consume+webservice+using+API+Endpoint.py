@@ -35,7 +35,7 @@ json_data = json.dumps({"data": x_new})
 # ---------------------------------------------------
 # Create the headers with authorization key
 # ---------------------------------------------------
-key = 'WxpCLzMGSPz3LN6uhYF3TMIeBdogT0Vp'
+key = '1dp0GUWiGTqAmZkSunhvnzh2oL4BRZvb'
 
 # Set the content type and authorization
 headers = {'Content-Type': 'application/json',
